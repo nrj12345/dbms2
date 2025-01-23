@@ -1,0 +1,252 @@
+/* styles.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: rgb(2, 2, 53);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+  }
+  
+  .logo span {
+    color: white;
+  }
+  
+  .nav {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Active Navbar Button (Home in blue) */
+  .nav-button.active {
+    color: #007bff; /* Blue color for active button */
+  }
+  
+  /* Hover effect for buttons */
+  .nav-button:hover {
+    color: #007bff;
+    background-color: transparent;
+  }
+  
+  .home-button,
+  .showtime-button,
+  .about-button {
+    margin-right: 10px;
+    background-color: transparent;
+  }
+  
+  .search-bar {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-right: 20px;
+    width: 200px;
+  }
+  
+  .location {
+    margin-right: 20px;
+    font-size: 16px;
+    color: white;
+  }
+  
+  .location span:hover {
+    color: #007bff;
+  }
+  
+  .sign-in {
+    padding: 8px 15px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .sign-in:hover {
+    color: #007bff;
+  }
+  
+  .main {
+    padding: 20px;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #111827;
+  }
+  
+  /* Banner Section */
+  .banner {
+    position: relative;
+    margin-bottom: 10px;
+  }
+  
+  .banner-image {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .banner-text {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    color: black;
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+  }
+  
+  /* Movie Section Styling */
+  .movie-section {
+    text-align: left;
+    margin: 20px 0;
+    margin-top: 30px;
+    background-color: #111827;
+  }
+  
+  /* Movie Buttons Styling */
+  .movie-buttons {
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 0;
+    border-bottom: 5px solid darkblue;
+    color: #000;
+    margin-left: 60px;
+    margin-right: 20px;
+  }
+  
+  .movie-buttons a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    margin: 0 10px;
+    padding: 5px 10px;
+    position: relative;
+  }
+  
+  .movie-buttons a.active {
+    font-weight: bold;
+    color: white;
+  }
+  
+  .movie-buttons a.active::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background-color: #ffc107;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+  }
+  
+  .nowshowing,
+  .commingsoon {
+    margin-left: 50px;
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: 800;
+    color: white;
+  }
+  
+  /* Image Grid Layout */
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  /* Image Button Style */
+  .image-button {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin: 2px;
+  }
+  
+  .image-button img {
+    width: 100%;
+    border-radius: 5px;
+    transition: transform 0.3s;
+  }
+  
+  .image-button:hover img {
+    transform: scale(1.05);
+  }
+  
+  /* Mobile Screen Adjustments */
+  @media (max-width: 768px) {
+    .image-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  
+  /* Movie Title Positioning */
+  .mtitle {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 17px;
+    font-weight: 800;
+    text-align: center;
+    padding: 5px 10px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for readability */
+  }
+  
+  /* Coming Soon Section */
+  .coming-soon-section {
+    background-color: rgb(2, 2, 73);
+    background-size: cover;
+    color: #333;
+    padding: 50px;
+    text-align: center;
+    border-top: 5px solid rgb(27, 27, 0);
+    margin-top: 20px;
+  }
+  
+  /* Slide-in Animation */
+  @keyframes slideInUp {
+    0% {
+      transform: translateY(60px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  .animated {
+    animation: slideInUp 1s ease forwards;
+  }
+  
