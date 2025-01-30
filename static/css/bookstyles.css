@@ -1,0 +1,111 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    
+    background-color: #111827;
+  }
+  
+  .movies-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Add space between movie containers */
+    width: 90%; /* Limit the width */
+    max-width: 1000px;
+    margin-bottom: 40px;
+  }
+  
+  .movie-container {
+    display: flex;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+  }
+
+  .con1{
+    margin-top: 100px;
+  }
+
+
+  .movie-poster img {
+    width: 150px;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .movie-details {
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+
+
+  .genre {
+    background-color: #f0f0f0;  /* Light grey background */
+    border-radius: 20px;        /* Rounded edges */
+    padding: 5px 15px;          /* Space inside the box */
+    margin-top: 10px;
+    margin-bottom: 10px;            /* Add some space above the genre */
+    display: inline-block;      /* Keep the genre text as an inline block */
+    max-width: 150px;           /* Limit the width of the box (adjust as needed) */
+    text-align: center;         /* Center the text inside the box */
+    word-wrap: break-word;      /* Prevent overflow if the text is long */
+  }
+  
+  
+  .genre-text {
+    font-size: 14px;            /* Adjust text size */
+    color: #333;                /* Dark text for contrast */
+    font-weight: bold;          /* Optional: makes the genre text bold */
+  }
+  
+  
+  .movie-title {
+    margin: 0 0 20px;
+    font-size: 24px;
+    color: #333;
+    position: relative;
+    text-align: left; /* Optional, ensures the title aligns properly */  
+  }
+
+  .movie-title::after {
+    content: "";
+    display: block;
+    width: 250px; /* Adjust the width for the underline length */
+    height: 3px; /* Adjust the thickness of the underline */
+    background-color: #007BFF; /* Underline color */
+    margin-top: 5px; /* Space between the title and the underline */
+    border-radius: 2px; /* Optional, for rounded edges */
+  }
+  
+  .time-slots {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .time-slot {
+    padding: 10px 15px;
+    font-size: 14px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .time-slot:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seat Booking</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/seatstyles.css') }}">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body >
+
+<header class="header">
+
+  <nav class="bg-white dark:bg-slate-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-slate-600">
+      <div class="max-w-screen-8xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse"> 
+          <img src="{{ url_for('static', filename='img/logo.png') }}" class="h-8" alt="Your Logo"> 
+         
+      </a>
+        <div class="flex flex-col md:flex-row md:space-x-8 md:items-center">
+          <ul class="flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-8 p-0 font-medium">
+            <li>
+              <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">Home</a>
+            </li>
+            <li>
+              <a href="/about" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">About</a>
+            </li>
+            <li>
+              <a href="/contact" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">Contact</a>
+            </li>
+          </ul>
+          <a href="/booknow">
+            <button type="button" class="mt-4 md:mt-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 " aria-current="page">
+              Book Now
+            </button>
+          </a>
+        </div>
+      </div>
+    </nav>
+  
+  </header>
+
+
+  <div class="container1">
+    <!-- Movie Info Section -->
+    <div class="movie-info">
+      <img src="{{ url_for('static', filename='img/1.jpg') }}" alt="Movie Poster" class="movie-poster">
+      <div class="movie-details">
+        <h2>Rekhachithram</h2>
+        <div class="movie-time">
+          <span>19 Jan, Sunday</span> | <span>4:40 PM</span>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- <hr class="underline"> -->
+<div class="bg-c">
+    <!-- Seat Selection Section -->
+    <header>
+      <h1>Select Seats</h1>
+    </header>
+
+    <div class="screen">
+      <h2>SCREEN</h2>
+      <div class="screen-bar"></div>
+    </div>
+    <div class="container">
+    <div class="seat-container">
+      <div class="category">
+        <h3>Luxe (90.00)</h3>
+        <div class="row-label">A</div>
+        <div class="row" data-category="90">
+          <button class="seat">1</button>
+          <button class="seat">2</button>
+          <button class="seat">3</button>
+          <button class="seat">4</button>
+          <button class="seat">5</button>
+          <button class="seat">6</button>
+          <button class="seat">7</button>
+          <button class="seat">8</button>
+          <button class="seat">9</button>
+          <button class="seat">10</button>
+          <button class="seat">11</button>
+          <button class="seat">12</button>
+          <button class="seat">13</button>
+          <button class="seat">14</button>
+        </div>
+        <div class="row-label">B</div>
+        <div class="row" data-category="90">
+          <button class="seat">1</button>
+          <button class="seat">2</button>
+          <button class="seat">3</button>
+          <button class="seat">4</button>
+          <button class="seat">5</button>
+          <button class="seat">6</button>
+          <button class="seat">7</button>
+          <button class="seat">8</button>
+          <button class="seat">9</button>
+          <button class="seat">10</button>
+          <button class="seat">11</button>
+          <button class="seat">12</button>
+          <button class="seat">13</button>
+          <button class="seat">14</button>
+        </div>
+        <div class="row-label">C</div>
+        <div class="row" data-category="90">
+          <button class="seat">1</button>
+          <button class="seat">2</button>
+          <button class="seat">3</button>
+          <button class="seat">4</button>
+          <button class="seat">5</button>
+          <button class="seat">6</button>
+          <button class="seat">7</button>
+          <button class="seat">8</button>
+          <button class="seat">9</button>
+          <button class="seat">10</button>
+          <button class="seat">11</button>
+          <button class="seat">12</button>
+          <button class="seat">13</button>
+          <button class="seat">14</button>
+        </div>
+      </div>
+      <div class="category">
+        <h3>Luxe Prime (150.00)</h3>
+        <div class="row-label">D</div>
+        <div class="row" data-category="150">
+          <button class="seat">1</button>
+          <button class="seat">2</button>
+          <button class="seat">3</button>
+          <button class="seat">4</button>
+          <button class="seat">5</button>
+          <button class="seat">6</button>
+          <button class="seat">7</button>
+          <button class="seat">8</button>
+          <button class="seat">9</button>
+          <button class="seat">10</button>
+          <button class="seat">11</button>
+          <button class="seat">12</button>
+          <button class="seat">13</button>
+          <button class="seat">14</button>
+          <button class="seat">15</button>
+          <button class="seat">16</button>
+        </div>
+        <div class="row-label">E</div>
+        <div class="row" data-category="150">
+          <button class="seat">1</button>
+          <button class="seat">2</button>
+          <button class="seat">3</button>
+          <button class="seat">4</button>
+          <button class="seat">5</button>
+          <button class="seat">6</button>
+          <button class="seat">7</button>
+          <button class="seat">8</button>
+          <button class="seat">9</button>
+          <button class="seat">10</button>
+          <button class="seat">11</button>
+          <button class="seat">12</button>
+          <button class="seat">13</button>
+          <button class="seat">14</button>
+          <button class="seat">15</button>
+          <button class="seat">16</button>
+        </div>
+        <div class="row-label">F</div>
+        <div class="row" data-category="150">
+          <button class="seat">1</button>
+          <button class="seat">2</button>
+          <button class="seat">3</button>
+          <button class="seat">4</button>
+          <button class="seat">5</button>
+          <button class="seat">6</button>
+          <button class="seat">7</button>
+          <button class="seat">8</button>
+          <button class="seat">9</button>
+          <button class="seat">10</button>
+          <button class="seat">11</button>
+          <button class="seat">12</button>
+          <button class="seat">13</button>
+          <button class="seat">14</button>
+          <button class="seat">15</button>
+          <button class="seat">16</button>
+        </div>
+        <div class="row-label">G</div>
+        <div class="row" data-category="150">
+          <button class="seat">1</button>
+          <button class="seat">2</button>
+          <button class="seat">3</button>
+          <button class="seat">4</button>
+          <button class="seat">5</button>
+          <button class="seat">6</button>
+          <button class="seat">7</button>
+          <button class="seat">8</button>
+          <button class="seat">9</button>
+          <button class="seat">10</button>
+          <button class="seat">11</button>
+          <button class="seat">12</button>
+          <button class="seat">13</button>
+          <button class="seat">14</button>
+          <button class="seat">15</button>
+          <button class="seat">16</button>
+        </div>
+        <div class="row-label">H</div>
+        <div class="row" data-category="150">
+          <button class="seat">1</button>
+          <button class="seat">2</button>
+          <button class="seat">3</button>
+          <button class="seat">4</button>
+          <button class="seat">5</button>
+          <button class="seat">6</button>
+          <button class="seat">7</button>
+          <button class="seat">8</button>
+          <button class="seat">9</button>
+          <button class="seat">10</button>
+          <button class="seat">11</button>
+          <button class="seat">12</button>
+          <button class="seat">13</button>
+          <button class="seat">14</button>
+          <button class="seat">15</button>
+          <button class="seat">16</button>
+          <button class="seat">17</button>
+          <button class="seat">18</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="summary-bar">
+    <div class="summary-content">
+      <p><strong>Selected Seats:</strong> <span id="selected-seats">None</span></p>
+      <p><strong>Total Price:</strong> ₹<span id="total-price">0</span></p>
+    </div>
+    <button id="confirm-booking" class="confirm-btn">Confirm Booking</button>
+  </div>
+  
+  <script src="{{ url_for('static', filename='js/seatscripts.js') }}"></script>
+</body>
+</html>
