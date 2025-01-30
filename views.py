@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-from flask import render_template  # type: ignore
-=======
 from flask import render_template, request, redirect, url_for, make_response
 from models import User, SessionLocal
->>>>>>> master
 
 def home():
     return render_template('home.html')
@@ -17,13 +13,6 @@ def contact():
 def book_now():
     return render_template('booknow.html')
 
-<<<<<<< HEAD
-def signup():
-    return render_template('signup.html')
-
-def login():
-    return render_template('login.html')
-=======
 def screen():
     return render_template('screen.html')
 
@@ -81,4 +70,3 @@ def login():
     response.set_cookie('user_email', email, max_age=600)  # 300 seconds = 5 minutes
     return response
 
->>>>>>> master

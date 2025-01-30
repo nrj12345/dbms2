@@ -1,9 +1,5 @@
 /* styles.css */
 
-<<<<<<< HEAD
-body {
-    font-family: Arial, sans-serif;
-=======
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
@@ -14,67 +10,11 @@ body {
 
 body {
    
->>>>>>> master
     margin: 0;
     padding: 0;
     background-color: black;
   }
   
-<<<<<<< HEAD
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: rgb(2, 2, 53);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #007bff;
-  }
-  
-  .logo span {
-    color: white;
-  }
-  
-  .nav {
-    display: flex;
-    align-items: center;
-  }
-  
-  .nav-button {
-    background-color: transparent;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  /* Active Navbar Button (Home in blue) */
-  .nav-button.active {
-    color: #007bff; /* Blue color for active button */
-  }
-  
-  /* Hover effect for buttons */
-  .nav-button:hover {
-    color: #007bff;
-    background-color: transparent;
-  }
-  
-  .home-button,
-  .showtime-button,
-  .about-button {
-    margin-right: 10px;
-    background-color: transparent;
-  }
-=======
->>>>>>> master
   
   .search-bar {
     padding: 10px;
@@ -113,10 +53,6 @@ body {
   
   body {
     margin: 0;
-<<<<<<< HEAD
-    font-family: Arial, sans-serif;
-=======
->>>>>>> master
     background: url('') no-repeat center center fixed;
     background-size: cover;
     background-color: #111827;
@@ -162,11 +98,7 @@ body {
   }
   
   .movie-buttons a {
-<<<<<<< HEAD
-    text-decoration: none;
-=======
     
->>>>>>> master
     color: white;
     font-size: 16px;
     margin: 0 10px;
