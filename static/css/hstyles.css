@@ -1,12 +1,26 @@
 /* styles.css */
 
+<<<<<<< HEAD
 body {
     font-family: Arial, sans-serif;
+=======
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+#headline {
+    font-family: 'Poppins', sans-serif;
+}
+
+
+body {
+   
+>>>>>>> master
     margin: 0;
     padding: 0;
     background-color: black;
   }
   
+<<<<<<< HEAD
   .header {
     display: flex;
     justify-content: space-between;
@@ -59,6 +73,8 @@ body {
     margin-right: 10px;
     background-color: transparent;
   }
+=======
+>>>>>>> master
   
   .search-bar {
     padding: 10px;
@@ -97,7 +113,10 @@ body {
   
   body {
     margin: 0;
+<<<<<<< HEAD
     font-family: Arial, sans-serif;
+=======
+>>>>>>> master
     background: url('') no-repeat center center fixed;
     background-size: cover;
     background-color: #111827;
@@ -143,7 +162,11 @@ body {
   }
   
   .movie-buttons a {
+<<<<<<< HEAD
     text-decoration: none;
+=======
+    
+>>>>>>> master
     color: white;
     font-size: 16px;
     margin: 0 10px;
