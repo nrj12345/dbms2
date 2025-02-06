@@ -9,52 +9,55 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body >
+<body>
 
 <header class="header">
-
   <nav class="bg-white dark:bg-slate-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-slate-600">
-      <div class="max-w-screen-8xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse"> 
-          <img src="{{ url_for('static', filename='img/logo.png') }}" class="h-8" alt="Your Logo"> 
-         
+    <div class="max-w-screen-8xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+        <img src="{{ url_for('static', filename='img/logo.png') }}" class="h-8" alt="Your Logo">
       </a>
-        <div class="flex flex-col md:flex-row md:space-x-8 md:items-center">
-          <ul class="flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-8 p-0 font-medium">
-            <li>
-              <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">Home</a>
-            </li>
-            <li>
-              <a href="/about" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">About</a>
-            </li>
-            <li>
-              <a href="/contact" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">Contact</a>
-            </li>
-          </ul>
-          <a href="/booknow">
-            <button type="button" class="mt-4 md:mt-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 " aria-current="page">
-              Book Now
-            </button>
-          </a>
-        </div>
+      <div class="flex flex-col md:flex-row md:space-x-8 md:items-center">
+        <ul class="flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-8 p-0 font-medium">
+          <li><a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">Home</a></li>
+          <li><a href="/about" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">About</a></li>
+          <li><a href="/contact" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">Contact</a></li>
+        </ul>
+        <a href="/booknow">
+          <button type="button" class="mt-4 md:mt-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" aria-current="page">
+            Book Now
+          </button>
+        </a>
       </div>
-    </nav>
-  
-  </header>
+    </div>
+  </nav>
+</header>
 
-
-  <div class="container1">
-    <!-- Movie Info Section -->
-    <div class="movie-info">
-      <img src="{{ url_for('static', filename='img/1.jpg') }}" alt="Movie Poster" class="movie-poster">
-      <div class="movie-details">
-        <h2>Rekhachithram</h2>
-        <div class="movie-time">
-          <span>19 Jan, Sunday</span> | <span>4:40 PM</span>
-        </div>
+<div class="container1">
+  <!-- Movie Info Section -->
+  <div class="movie-info">
+    <img src="{{ url_for('static', filename='img/' + movie.movie_id|string + '.jpg') }}" alt="Movie Poster" class="movie-poster">
+    <div class="movie-details">
+      <h2>{{ movie.name }}</h2>
+      <div class="movie-time">
+        <span>{{ time_slot }}</span> <!-- Display the selected showtime -->
       </div>
     </div>
   </div>
+</div>
+
+<div class="bg-c">
+  <!-- Seat Selection Section -->
+  <header>
+    <h1>Select Seats</h1>
+  </header>
+
+  <div class="screen">
+    <h2>SCREEN 1</h2> <!-- Display the screen number -->
+    <div class="screen-bar"></div>
+  </div>
+
+
     <!-- <hr class="underline"> -->
 <div class="bg-c">
     <!-- Seat Selection Section -->
@@ -62,177 +65,160 @@
       <h1>Select Seats</h1>
     </header>
 
-    <div class="screen">
-      <h2>SCREEN</h2>
-      <div class="screen-bar"></div>
-    </div>
+    
     <div class="container">
-    <div class="seat-container">
-      <div class="category">
-        <h3>Luxe (90.00)</h3>
-        <div class="row-label">A</div>
-        <div class="row" data-category="90">
-          <button class="seat">1</button>
-          <button class="seat">2</button>
-          <button class="seat">3</button>
-          <button class="seat">4</button>
-          <button class="seat">5</button>
-          <button class="seat">6</button>
-          <button class="seat">7</button>
-          <button class="seat">8</button>
-          <button class="seat">9</button>
-          <button class="seat">10</button>
-          <button class="seat">11</button>
-          <button class="seat">12</button>
-          <button class="seat">13</button>
-          <button class="seat">14</button>
-        </div>
-        <div class="row-label">B</div>
-        <div class="row" data-category="90">
-          <button class="seat">1</button>
-          <button class="seat">2</button>
-          <button class="seat">3</button>
-          <button class="seat">4</button>
-          <button class="seat">5</button>
-          <button class="seat">6</button>
-          <button class="seat">7</button>
-          <button class="seat">8</button>
-          <button class="seat">9</button>
-          <button class="seat">10</button>
-          <button class="seat">11</button>
-          <button class="seat">12</button>
-          <button class="seat">13</button>
-          <button class="seat">14</button>
-        </div>
-        <div class="row-label">C</div>
-        <div class="row" data-category="90">
-          <button class="seat">1</button>
-          <button class="seat">2</button>
-          <button class="seat">3</button>
-          <button class="seat">4</button>
-          <button class="seat">5</button>
-          <button class="seat">6</button>
-          <button class="seat">7</button>
-          <button class="seat">8</button>
-          <button class="seat">9</button>
-          <button class="seat">10</button>
-          <button class="seat">11</button>
-          <button class="seat">12</button>
-          <button class="seat">13</button>
-          <button class="seat">14</button>
-        </div>
-      </div>
-      <div class="category">
-        <h3>Luxe Prime (150.00)</h3>
-        <div class="row-label">D</div>
-        <div class="row" data-category="150">
-          <button class="seat">1</button>
-          <button class="seat">2</button>
-          <button class="seat">3</button>
-          <button class="seat">4</button>
-          <button class="seat">5</button>
-          <button class="seat">6</button>
-          <button class="seat">7</button>
-          <button class="seat">8</button>
-          <button class="seat">9</button>
-          <button class="seat">10</button>
-          <button class="seat">11</button>
-          <button class="seat">12</button>
-          <button class="seat">13</button>
-          <button class="seat">14</button>
-          <button class="seat">15</button>
-          <button class="seat">16</button>
-        </div>
-        <div class="row-label">E</div>
-        <div class="row" data-category="150">
-          <button class="seat">1</button>
-          <button class="seat">2</button>
-          <button class="seat">3</button>
-          <button class="seat">4</button>
-          <button class="seat">5</button>
-          <button class="seat">6</button>
-          <button class="seat">7</button>
-          <button class="seat">8</button>
-          <button class="seat">9</button>
-          <button class="seat">10</button>
-          <button class="seat">11</button>
-          <button class="seat">12</button>
-          <button class="seat">13</button>
-          <button class="seat">14</button>
-          <button class="seat">15</button>
-          <button class="seat">16</button>
-        </div>
-        <div class="row-label">F</div>
-        <div class="row" data-category="150">
-          <button class="seat">1</button>
-          <button class="seat">2</button>
-          <button class="seat">3</button>
-          <button class="seat">4</button>
-          <button class="seat">5</button>
-          <button class="seat">6</button>
-          <button class="seat">7</button>
-          <button class="seat">8</button>
-          <button class="seat">9</button>
-          <button class="seat">10</button>
-          <button class="seat">11</button>
-          <button class="seat">12</button>
-          <button class="seat">13</button>
-          <button class="seat">14</button>
-          <button class="seat">15</button>
-          <button class="seat">16</button>
-        </div>
-        <div class="row-label">G</div>
-        <div class="row" data-category="150">
-          <button class="seat">1</button>
-          <button class="seat">2</button>
-          <button class="seat">3</button>
-          <button class="seat">4</button>
-          <button class="seat">5</button>
-          <button class="seat">6</button>
-          <button class="seat">7</button>
-          <button class="seat">8</button>
-          <button class="seat">9</button>
-          <button class="seat">10</button>
-          <button class="seat">11</button>
-          <button class="seat">12</button>
-          <button class="seat">13</button>
-          <button class="seat">14</button>
-          <button class="seat">15</button>
-          <button class="seat">16</button>
-        </div>
-        <div class="row-label">H</div>
-        <div class="row" data-category="150">
-          <button class="seat">1</button>
-          <button class="seat">2</button>
-          <button class="seat">3</button>
-          <button class="seat">4</button>
-          <button class="seat">5</button>
-          <button class="seat">6</button>
-          <button class="seat">7</button>
-          <button class="seat">8</button>
-          <button class="seat">9</button>
-          <button class="seat">10</button>
-          <button class="seat">11</button>
-          <button class="seat">12</button>
-          <button class="seat">13</button>
-          <button class="seat">14</button>
-          <button class="seat">15</button>
-          <button class="seat">16</button>
-          <button class="seat">17</button>
-          <button class="seat">18</button>
+      <div class="seat-container">
+        <div class="category">
+          <h3>Luxe: ₹{{ seat_details.luxe_price }}</h3>
+  
+          
+                <!-- Row A -->
+                <div class="row-label">A</div>
+                <div class="row" data-category="{{ seat_details.luxe_price }}">
+                  {% for seat_num in range(1, 15) %}
+                    <button class="seat {% if 'A' + seat_num|string in booked_seat_numbers %} booked {% endif %}" 
+                            {% if 'A' + seat_num|string in booked_seat_numbers %} disabled {% endif %}>
+                      {{ seat_num }}
+                    </button>
+                  {% endfor %}
+                </div>
+          
+                <!-- Row B -->
+                <div class="row-label">B</div>
+                <div class="row" data-category="{{ seat_details.luxe_price }}">
+                  {% for seat_num in range(1, 15) %}
+                    <button class="seat {% if 'B' + seat_num|string in booked_seat_numbers %} booked {% endif %}" 
+                            {% if 'B' + seat_num|string in booked_seat_numbers %} disabled {% endif %}>
+                      {{ seat_num }}
+                    </button>
+                  {% endfor %}
+                </div>
+          
+                <!-- Row C -->
+                <div class="row-label">C</div>
+                <div class="row" data-category="{{ seat_details.luxe_price }}">
+                  {% for seat_num in range(1, 15) %}
+                    <button class="seat {% if 'C' + seat_num|string in booked_seat_numbers %} booked {% endif %}" 
+                            {% if 'C' + seat_num|string in booked_seat_numbers %} disabled {% endif %}>
+                      {{ seat_num }}
+                    </button>
+                  {% endfor %}
+                </div>
+          
+                <!-- Row D -->
+                <div class="row-label">D</div>
+                <div class="row" data-category="{{ seat_details.luxe_price }}">
+                  {% for seat_num in range(1, 17) %}
+                    <button class="seat {% if 'D' + seat_num|string in booked_seat_numbers %} booked {% endif %}" 
+                            {% if 'D' + seat_num|string in booked_seat_numbers %} disabled {% endif %}>
+                      {{ seat_num }}
+                    </button>
+                  {% endfor %}
+                </div>
+          
+                <!-- Row E -->
+                <div class="row-label">E</div>
+                <div class="row" data-category="{{ seat_details.luxe_prime_price }}">
+                  {% for seat_num in range(1, 17) %}
+                    <button class="seat {% if 'E' + seat_num|string in booked_seat_numbers %} booked {% endif %}" 
+                            {% if 'E' + seat_num|string in booked_seat_numbers %} disabled {% endif %}>
+                      {{ seat_num }}
+                    </button>
+                  {% endfor %}
+                </div>
+          
+                <!-- Row F -->
+                <div class="row-label">F</div>
+                <div class="row" data-category="{{ seat_details.luxe_prime_price }}">
+                  {% for seat_num in range(1, 17) %}
+                    <button class="seat {% if 'F' + seat_num|string in booked_seat_numbers %} booked {% endif %}" 
+                            {% if 'F' + seat_num|string in booked_seat_numbers %} disabled {% endif %}>
+                      {{ seat_num }}
+                    </button>
+                  {% endfor %}
+                </div>
+          
+                <!-- Row G -->
+                <div class="row-label">G</div>
+                <div class="row" data-category="{{ seat_details.luxe_prime_price }}">
+                  {% for seat_num in range(1, 17) %}
+                    <button class="seat {% if 'G' + seat_num|string in booked_seat_numbers %} booked {% endif %}" 
+                            {% if 'G' + seat_num|string in booked_seat_numbers %} disabled {% endif %}>
+                      {{ seat_num }}
+                    </button>
+                  {% endfor %}
+                </div>
+          
+                <!-- Row H -->
+                <div class="row-label">H</div>
+                <div class="row" data-category="{{ seat_details.luxe_prime_price }}">
+                  {% for seat_num in range(1, 19) %}
+                    <button class="seat {% if 'H' + seat_num|string in booked_seat_numbers %} booked {% endif %}" 
+                            {% if 'H' + seat_num|string in booked_seat_numbers %} disabled {% endif %}>
+                      {{ seat_num }}
+                    </button>
+                  {% endfor %}
+                </div>
+          
+              </div>
+            </div>
+          </div>
+          
+    
         </div>
       </div>
     </div>
+    
   </div>
-</div>
+ </div>
   <div class="summary-bar">
     <div class="summary-content">
       <p><strong>Selected Seats:</strong> <span id="selected-seats">None</span></p>
-      <p><strong>Total Price:</strong> ₹<span id="total-price">0</span></p>
+      <p><strong>Total Price:</strong> <span id="total-price">0</span></p>
     </div>
-    <button id="confirm-booking" class="confirm-btn">Confirm Booking</button>
+    <form id="booking-form" action="/book" method="POST">
+      <input type="hidden" name="selected_seats" id="selected-seats-input">
+      <input type="hidden" name="movie_id" value="{{ movie.movie_id }}">
+      <input type="hidden" name="time_slot" value="{{ time_slot }}">
+      <input type="hidden" name="screen_number" value="1">
+      <button type="submit" id="confirm-booking" class="confirm-btn">Confirm Booking</button>
+  </form>
+  
   </div>
   
   <script src="{{ url_for('static', filename='js/seatscripts.js') }}"></script>
+
+  
+  
+  <footer class="bg-white lg shadow dark:bg-gray-900 ">
+    <div class="w-full max-w-screen-8xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+          
+          <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse"> 
+            <img src="{{ url_for('static', filename='img/logo2.png') }}" class="h-8" alt="Your Logo"> 
+            <img src="{{ url_for('static', filename='img/logo.png') }}" class="h-8" alt="Your Logo"> 
+           
+        </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                <li>
+                    <a href="/about" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                </li>
+                <li>
+                    <a href="/contact" class="hover:underline">Contact</a>
+                </li>
+            </ul>
+        </div>
+  <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+  <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="/" class="hover:underline">Forecast™</a>. All Rights Reserved.</span>
+  </div>
+  </footer>
+  
+
 </body>
 </html>

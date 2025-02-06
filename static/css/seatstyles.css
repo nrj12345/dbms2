@@ -109,18 +109,20 @@ header h1 {
   flex-direction: column;
   gap: 20px;
   margin-top: 30px;
-  margin-left: 55px;
+  margin-left: 40px;
 }
 
 .category {
   margin-bottom: 20px;
+  margin-left: 100px;
+  margin-top: 20px;
 }
 
 .category h3 {
   font-size: 16px;
   margin-bottom: 10px;
   color: white;
-  margin-left: 60px;
+  margin-left: 50px;
 }
 
 .row-label {
@@ -131,7 +133,7 @@ header h1 {
   display: inline-block;
   width: 30px; /* Adjust width to fit the label */
   text-align: center;
-  margin-left: 100px;
+  margin-left: 80px;
   position: relative;
   top: 30px;
 }
@@ -141,6 +143,7 @@ header h1 {
   justify-content: center;
   gap: 10px;
   margin-bottom: 0px;
+  margin-left: 90px;
 }
 
 .seat {

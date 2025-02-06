@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Theater Profile Page</title>
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='img/favicon.png') }}">
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/hstyles.css') }}">
+
+</head>
+      <body>
+        <header class="header">
+    <!-- Navbar -->
+    
+    <nav class="bg-white dark:bg-slate-900 fixed w-full z-20 top-0 start-0 border-b border-gray-200 dark:border-slate-600">
+        <div class="max-w-screen-8xl flex flex-wrap items-center justify-between mx-auto p-4">
+          <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse"> 
+            <img src="{{ url_for('static', filename='img/logo.png') }}" class="h-8" alt="Your Logo"> 
+           
+        </a>
+          <div class="flex flex-col md:flex-row md:space-x-8 md:items-center">
+            <ul class="flex flex-col md:flex-row items-start space-y-2 md:space-y-0 md:space-x-8 p-0 font-medium">
+              <li>
+                <a href="/" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">Home</a>
+              </li>
+              <li>
+                <a href="/about" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">About</a>
+              </li>
+              <li>
+                <a href="/contact" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-slate-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-slate-700">Contact</a>
+              </li>
+            </ul>
+            <a href="{% if request.cookies.get('user_data') %}/booknow{% else %}/login{% endif %}">
+              <button type="button" class="mt-4 md:mt-0 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                  Book Now
+              </button>
+          </a>
+          
+          </div>
+        </div>
+      </nav>
+
+    </header>
+
+
+    <!-- Main Content -->
+    <div class="container mx-auto p-4 mt-20">
+      <!-- Profile Section -->
+      <div class="bg-gray-100 dark:bg-slate-800 text-gray-900 dark:text-white shadow rounded-lg p-6 mb-6 flex items-center">
+        <img src="https://via.placeholder.com/100" alt="User Avatar" class="w-24 h-24 rounded-full mr-6" />
+        <div>
+          <h1 class="text-2xl font-bold mb-2">{{ user.name }}</h1>
+          <p class="text-gray-600 dark:text-gray-300">{{ user.email }}</p>
+        </div>
+      </div>
+
+      <!-- History Tabs -->
+      <div class="mb-4">
+        <nav class="flex space-x-4">
+          <!-- Active History tab (default active) -->
+          <button id="activeTab" class="px-4 py-2 bg-blue-700 text-white rounded hover:bg-gray-300 dark:hover:bg-slate-600 focus:outline-none">
+            Active History
+          </button>
+          <!-- Expired History tab -->
+          <button id="expiredTab" class="px-4 py-2 bg-gray-200 text-gray-900 dark:bg-slate-700 dark:text-white rounded hover:bg-gray-300 dark:hover:bg-slate-600 focus:outline-none">
+            Expired History
+          </button>
+        </nav>
+      </div>
+
+     <!-- Active History Section -->
+<div id="activeHistory" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    {% for booking in active_bookings %}
+      <div class="bg-gray-100 dark:bg-slate-800 text-gray-900 dark:text-white shadow rounded-lg overflow-hidden flex">
+        <!-- Left side: Movie poster -->
+        <div class="w-1/3">
+          <img src="{{ url_for('static', filename='img/' ~ booking.movie_id ~ '.jpg') }}" 
+               alt="Movie Poster" 
+               class="w-full h-full object-contain" />
+        </div>
+        <!-- Right side: Booking details -->
+        <div class="w-2/3 p-4">
+          <h2 class="font-bold text-xl mb-2">{{ booking.movie_name }}</h2>
+          <p class="text-gray-600 dark:text-gray-300">Screen: {{ booking.screen }}</p>
+          <p class="text-gray-600 dark:text-gray-300">Time: {{ booking.time_slot }}</p>
+          <p class="text-gray-600 dark:text-gray-300">Seats: {{ booking.seats }}</p>
+          <p class="text-gray-600 dark:text-gray-300">Cost: ${{ booking.cost }}</p>
+          {% if booking.time_remaining %}
+            <p class="text-green-600 dark:text-green-300">
+              Show starts in:
+              {% set hrs = booking.time_remaining.seconds // 3600 %}
+              {% set mins = (booking.time_remaining.seconds // 60) % 60 %}
+              {{ hrs }}h {{ mins }}m
+            </p>
+          {% endif %}
+        </div>
+      </div>
+    {% else %}
+      <p class="text-center col-span-3">No active bookings found.</p>
+    {% endfor %}
+  </div>
+  
+  <!-- Expired History Section -->
+  <div id="expiredHistory" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 hidden">
+    {% for booking in expired_bookings %}
+      <div class="bg-gray-100 dark:bg-slate-800 text-gray-900 dark:text-white shadow rounded-lg overflow-hidden flex">
+        <!-- Left side: Movie poster -->
+        <div class="w-1/3">
+          <img src="{{ url_for('static', filename='img/' ~ booking.movie_id ~ '.jpg') }}" 
+               alt="Movie Poster" 
+               class="w-full h-full object-contain" />
+        </div>
+        <!-- Right side: Booking details -->
+        <div class="w-2/3 p-4">
+          <h2 class="font-bold text-xl mb-2">{{ booking.movie_name }}</h2>
+          <p class="text-gray-600 dark:text-gray-300">Screen: {{ booking.screen }}</p>
+          <p class="text-gray-600 dark:text-gray-300">Time: {{ booking.time_slot }}</p>
+          <p class="text-gray-600 dark:text-gray-300">Seats: {{ booking.seats }}</p>
+          <p class="text-gray-600 dark:text-gray-300">Cost: ${{ booking.cost }}</p>
+          <p class="text-red-600 dark:text-red-300">Show has expired.</p>
+        </div>
+      </div>
+    {% else %}
+      <p class="text-center col-span-3">No expired bookings found.</p>
+    {% endfor %}
+  </div>
+
+  <div style="padding: 20px 0;"></div>
+<div style="padding: 20px 0;"></div>
+  
+  <footer class="bg-white lg shadow dark:bg-gray-900 ">
+    <div class="w-full max-w-screen-8xl mx-auto p-4 md:py-8">
+        <div class="sm:flex sm:items-center sm:justify-between">
+          <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse"> 
+            <img src="{{ url_for('static', filename='img/logo.png') }}" class="h-8" alt="Your Logo"> 
+           
+        </a>
+            <ul class="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">About</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Privacy Policy</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline me-4 md:me-6">Licensing</a>
+                </li>
+                <li>
+                    <a href="#" class="hover:underline">Contact</a>
+                </li>
+            </ul>
+        </div>
+<hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+  <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="https://flowbite.com/" class="hover:underline">Forecast™</a>. All Rights Reserved.</span>
+</div>
+</footer>
+
+    <!-- JavaScript for Tab Switching -->
+    <script>
+      const activeTab = document.getElementById("activeTab");
+      const expiredTab = document.getElementById("expiredTab");
+      const activeHistory = document.getElementById("activeHistory");
+      const expiredHistory = document.getElementById("expiredHistory");
+
+      function setActiveTab(clickedTab, otherTab, showSection, hideSection) {
+        showSection.classList.remove("hidden");
+        hideSection.classList.add("hidden");
+
+        // Active tab styling
+        clickedTab.classList.add("bg-blue-700", "text-white");
+        clickedTab.classList.remove("bg-gray-200", "dark:bg-slate-700", "text-gray-900", "dark:text-white");
+
+        // Reset styling for the other tab
+        otherTab.classList.add("bg-gray-200", "dark:bg-slate-700", "text-gray-900", "dark:text-white");
+        otherTab.classList.remove("bg-blue-700", "text-white");
+      }
+
+      activeTab.addEventListener("click", () => setActiveTab(activeTab, expiredTab, activeHistory, expiredHistory));
+      expiredTab.addEventListener("click", () => setActiveTab(expiredTab, activeTab, expiredHistory, activeHistory));
+    </script>
+  </body>
+</html>

@@ -129,7 +129,9 @@ body {
     font-size: 18px;
     font-weight: 800;
     color: white;
+    margin-right: 50px;
   }
+
   
   /* Image Grid Layout */
   .image-grid {

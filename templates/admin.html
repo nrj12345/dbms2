@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Administration</title>
+  <link rel="stylesheet" href="https://rsms.me/inter/inter.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-900 text-white">
+  <main class="container mx-auto p-6">
+    <form action="{{ url_for('admin') }}" method="POST" enctype="multipart/form-data">
+      <div id="movies-container" class="space-y-6">
+        {% for movie in movies %}
+        <div class="movie-container flex bg-gray-800 rounded-lg shadow-md p-4 space-x-6 relative" data-key="{{ movie.movie_id }}">
+          <!-- Hidden movie key and movie_id (for existing movies) -->
+          <input type="hidden" name="movie_key" value="{{ movie.movie_id }}">
+          <input type="hidden" name="movies[{{ movie.movie_id }}][movie_id]" value="{{ movie.movie_id }}">
+
+          <div class="movie-poster flex-shrink-0 w-40">
+            <label class="block text-sm font-medium mb-1">Upload Poster:</label>
+            <input type="file" name="movies[{{ movie.movie_id }}][poster]" accept="image/*" class="hidden" onchange="previewImage(this)">
+            <img src="{{ url_for('static', filename='img/' + movie.movie_id|string + '.jpg') }}" alt="{{ movie.movie_title }} Poster" class="poster-preview w-full h-52 bg-gray-700 rounded-md object-cover cursor-pointer" onclick="selectImage(this)">
+          </div>
+
+          <div class="movie-details flex-grow">
+            <label class="block text-sm font-medium mb-1">Movie Title:</label>
+            <input type="text" name="movies[{{ movie.movie_id }}][movie_title]" value="{{ movie.movie_title }}" class="w-full bg-gray-700 text-white p-2 rounded-md" required>
+
+            <div class="genres mt-4">
+              <label class="block text-sm font-medium">Genres (Max: 3):</label>
+              <div class="genre-container space-y-2">
+                {% for g in movie.genres %}
+                <input type="text" name="movies[{{ movie.movie_id }}][genre][]" value="{{ g }}" class="w-full bg-gray-700 text-white p-2 rounded-md genre-input" required>
+                {% endfor %}
+              </div>
+              <div class="flex space-x-2 mt-2">
+                <button type="button" onclick="addGenre(this)" class="bg-blue-600 px-3 py-1 rounded">Add Genre</button>
+                <button type="button" onclick="removeGenre(this)" class="bg-red-600 px-3 py-1 rounded">Remove Genre</button>
+              </div>
+            </div>
+
+            <div class="time-slots mt-4">
+              <label class="block text-sm font-medium">Time Slots:</label>
+              <div class="time-slot-container space-y-2">
+                {% for ts, scr in movie.time_slots %}
+                <div class="flex space-x-2">
+                  <input type="time" name="movies[{{ movie.movie_id }}][time_slots][]" value="{{ ts }}" class="bg-gray-700 text-white p-2 rounded-md" required>
+                  <select name="movies[{{ movie.movie_id }}][screen][]" class="bg-gray-700 text-white p-2 rounded-md" required>
+                    <option value="1" {% if scr == '1' %}selected{% endif %}>Screen 1</option>
+                    <option value="2" {% if scr == '2' %}selected{% endif %}>Screen 2</option>
+                  </select>
+                  <button type="button" onclick="removeTimeSlot(this)" class="bg-red-600 text-white px-2 py-1 rounded text-xs">Remove</button>
+                </div>
+                {% endfor %}
+              </div>
+              <button type="button" onclick="addTimeSlot(this)" class="mt-2 bg-blue-600 px-3 py-1 rounded">Add Time Slot</button>
+            </div>
+          </div>
+          <button type="button" onclick="deleteMovie(this)" class="absolute top-2 right-2 bg-red-600 text-white px-2 py-1 rounded text-xs">Delete</button>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="flex space-x-4 mt-6">
+        <button type="button" onclick="addMovie()" class="bg-green-600 px-4 py-2 rounded">Add Movie</button>
+        <button type="submit" class="bg-blue-600 px-4 py-2 rounded">Insert/Update Movies</button>
+      </div>
+    </form>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+</body>
+</html>

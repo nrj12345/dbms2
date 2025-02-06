@@ -35,7 +35,7 @@ body {
 
 
   .movie-poster img {
-    width: 150px;
+    width: 200px;
     height: auto;
     object-fit: cover;
     display: block;
@@ -53,22 +53,26 @@ body {
   .genre {
     background-color: #f0f0f0;  /* Light grey background */
     border-radius: 20px;        /* Rounded edges */
-    padding: 5px 15px;          /* Space inside the box */
+    padding: 5px 20px;          /* Space inside the box */
     margin-top: 10px;
     margin-bottom: 10px;            /* Add some space above the genre */
     display: inline-block;      /* Keep the genre text as an inline block */
-    max-width: 150px;           /* Limit the width of the box (adjust as needed) */
+    max-width: 250px;           /* Limit the width of the box (adjust as needed) */
     text-align: center;         /* Center the text inside the box */
     word-wrap: break-word;      /* Prevent overflow if the text is long */
+    font-size: 15px; 
+
   }
   
-  
-  .genre-text {
-    font-size: 14px;            /* Adjust text size */
+  .genre-p {  
+    font-size: 10px;            /* Adjust text size */
     color: #333;                /* Dark text for contrast */
     font-weight: bold;          /* Optional: makes the genre text bold */
+
   }
-  
+
+
+
   
   .movie-title {
     margin: 0 0 20px;
